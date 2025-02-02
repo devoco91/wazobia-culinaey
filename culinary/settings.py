@@ -27,14 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-on3uso5!_yug6toip)n4die+l69j^q+$jjgcbx3ziyfmv1tkm@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic'
     'jazzmin',
     
     'django.contrib.admin',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,8 +139,9 @@ USE_TZ = True
 MEDIA_URL=''
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'school/static')
 ]
+STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT= BASE_DIR/''
 
 # Default primary key field type
