@@ -90,16 +90,39 @@ WSGI_APPLICATION = 'culinary.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'wazobia_culinary',
+#         'USER':'root',
+#         'PASSWORD':'Official@lasop1',
+#         'HOST':'127.0.0.1',
+#         'PORT':3306
+#     }
+# }
+
+
+
+
+# your_project/settings.py
+
+import pymysql
+pymysql.install_as_MySQLdb()  # Ensure pymysql is used as MySQLdb
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'wazobia_culinary',
-        'USER':'root',
-        'PASSWORD':'Official@lasop1',
-        'HOST':'127.0.0.1',
-        'PORT':3306
+        'USER': 'root',
+        'PASSWORD': 'Official@lasop1',
+        'HOST': '127.0.0.1',  # Example: '127.0.0.1' or 'your-remote-host'
+        'PORT': 3306,       # Default MySQL port
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        }
     }
 }
+
 
 
 # Password validation
