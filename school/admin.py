@@ -6,8 +6,8 @@ from .models import *
 
 
 class RegistrationAdmin(admin.ModelAdmin):
-    list_display=('name','email','address','phone', 'course', 'mode_of_study', 'shirt_size','date_registered')
-    list_filter=('name','course','mode_of_study','shirt_size', 'date_registered')
+    list_display=('name','email','address','phone', 'level','course', 'mode_of_study', 'shirt_size','date_registered')
+    list_filter=('name','course','mode_of_study','level','shirt_size', 'date_registered')
     
 class ContactMessageAdmin(admin.ModelAdmin):
     list_display=('name','email','subject','message', 'created_at')

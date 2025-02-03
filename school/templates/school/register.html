@@ -7,6 +7,9 @@
     <link rel="icon" type="image/x-icon" href="{% static './images/favicon.ico.png' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  
   </head>
   <body>
 
@@ -31,7 +34,7 @@
                   <a class="nav-link " aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="{% url 'about' %}">About</a>
+                  <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'contact' %}">Contact</a>
@@ -98,36 +101,45 @@
                               <label for="course" class="form-label">Course *</label>
                               <select class="form-select" id="course" name="course" required>
                                   <option selected disabled>Choose</option>
-                                  <option value="1">Basic (200, 000 Naira)</option>
-                                  <option value="2">Intensive (300, 000 Naira)</option>
-                                  <option value="2">Advanced (400, 000 Naira)</option>
+                                  <option value="Course 1">Course 1</option>
+                                  <option value="Course 2">Course 2</option>
+                                  <option value="Course 3">Course 3</option>
+                              </select>
+                          </div>
+                          <div class="mb-3">
+                              <label for="course" class="form-label">Level *</label>
+                              <select class="form-select" id="course" name="level" required>
+                                  <option selected disabled>Choose</option>
+                                  <option value="Basic">Basic (200, 000 Naira)</option>
+                                  <option value="Intensive">Intensive (300, 000 Naira)</option>
+                                  <option value="Advanced">Advanced (400, 000 Naira)</option>
                               </select>
                           </div>
                           <div class="mb-3">
                             <label class="form-label">Mode of Study *</label><br>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="mode_of_study" id="fulltime" value="Weekday" required>
-                                <label class="form-check-label" for="fulltime">Weekday</label>
+                                <label class="form-check-label" for="Weekday">Weekday</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="mode_of_study" id="parttime" value="Weekend">
-                                <label class="form-check-label" for="parttime">Weekend</label>
+                                <label class="form-check-label" for="weekend">Weekend</label>
                             </div>
                         </div>
                         
                           <div class="mb-3">
                               <label class="form-label">Gender *</label><br>
                               <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="gender" id="fulltime" required>
-                                  <label class="form-check-label" for="fulltime">Male</label>
+                                  <input class="form-check-input" type="radio" name="gender" id="fulltime" required value="Male">
+                                  <label class="form-check-label" for="male">Male</label>
                               </div>
                               <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="gender" id="parttime">
-                                  <label class="form-check-label" for="parttime">Female</label>
+                                  <input class="form-check-input" type="radio" name="gender" id="parttime" value="Female">
+                                  <label class="form-check-label" for="female">Female</label>
                               </div>
                               <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="gender" id="parttime">
-                                  <label class="form-check-label" for="parttime">Prefer not to say</label>
+                                  <input class="form-check-input" type="radio" name="gender" id="parttime" value="Prefer not to say">
+                                  <label class="form-check-label" for="prefer not to say">Prefer not to say</label>
                               </div>
                           </div>
                           <div class="mb-3">

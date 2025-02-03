@@ -5,10 +5,15 @@ class Registration(models.Model):
     email = models.EmailField()
     address = models.TextField()
     phone = models.CharField(max_length=15)
+    level = models.CharField(max_length=50, choices=[
+        ('Basic', 'Basic (200,000 Naira)'),
+        ('Intensive', 'Intensive (300,000 Naira)'),
+        ('Advanced', 'Advanced (400,000 Naira)')
+    ])
     course = models.CharField(max_length=50, choices=[
-        ('1', 'Basic (200,000 Naira)'),
-        ('2', 'Intensive (300,000 Naira)'),
-        ('3', 'Advanced (400,000 Naira)')
+        ('Course 1', 'Course 1'),
+        ('Course 2', 'Course 2'),
+        ('Course 3', 'Course 13')
     ])
     mode_of_study = models.CharField(max_length=10, choices=[('Weekday', 'Weekday'), ('Weekend', 'Weekend')])
     gender = models.CharField(max_length=20, choices=[('Male', 'Male'), ('Female', 'Female'), ('Prefer not to say', 'Prefer not to say')])

@@ -62,6 +62,7 @@ def registerpage(request):
         address = request.POST.get("address")
         phone = request.POST.get("phone")
         course = request.POST.get("course")
+        level = request.POST.get("level")
         mode_of_study = request.POST.get("mode_of_study")
         gender = request.POST.get("gender")
         shirt_size = request.POST.get("shirt_size")
