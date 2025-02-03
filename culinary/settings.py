@@ -35,8 +35,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic'
-    'jazzmin',
+    'whitenoise.runserver_nostatic',  # ✅ Correct Whitenoise setting
+    'jazzmin',  #
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -106,20 +106,40 @@ WSGI_APPLICATION = 'culinary.wsgi.application'
 
 # your_project/settings.py
 
+# import pymysql
+# pymysql.install_as_MySQLdb()  # Ensure pymysql is used as MySQLdb
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'wazobia_culinary',
+#         'USER': 'root',
+#         'PASSWORD': 'Official@lasop1',
+#         'HOST': '127.0.0.1',  # Example: '127.0.0.1' or 'your-remote-host'
+#         'PORT': 3306,       # Default MySQL port
+#         'OPTIONS': {
+#             'charset': 'utf8mb4',
+#         }
+#     }
+# }
+
+
+import os
 import pymysql
-pymysql.install_as_MySQLdb()  # Ensure pymysql is used as MySQLdb
+
+pymysql.install_as_MySQLdb()  # Ensure pymysql is used instead of mysqlclient
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wazobia_culinary',
-        'USER': 'root',
-        'PASSWORD': 'Official@lasop1',
-        'HOST': '127.0.0.1',  # Example: '127.0.0.1' or 'your-remote-host'
-        'PORT': 3306,       # Default MySQL port
+        'NAME': os.getenv('DB_NAME'),  # Fetch from environment
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': '3306',  # Default MySQL port
         'OPTIONS': {
             'charset': 'utf8mb4',
-        }
+        },
     }
 }
 
