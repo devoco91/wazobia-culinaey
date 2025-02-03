@@ -1,23 +1,13 @@
 {
-  "version": 2,
-  "builds": [
+    "builds": [{
+      "src": "culinary/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12.8 " }
+    }],
+    "routes": [
       {
-          "src": "culinary/wsgi.py",
-          "use": "@vercel/python",
-          "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+        "src": "/(.*)",
+        "dest": "culinary/wsgi.py"
       }
-  ],
-  "routes": [
-      {
-          "src": "/static/(.*)",
-          "dest": "/static/$1"
-      },
-      {
-          "src": "/(.*)",
-          "dest": "culinary/wsgi.py"
-      }
-  ],
-  "env": {
-      "DJANGO_SETTINGS_MODULE": "culinary.settings"
-  }
+    ]
 }
