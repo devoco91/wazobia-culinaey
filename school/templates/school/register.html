@@ -9,7 +9,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-  
+  <style>
+    .form-label{
+      font-size:20px !important;
+      font-weight:bold;
+    }
+    .form-control{
+      height: 40px;
+    }
+
+    .registers{
+      color:red !important;
+      margin-bottom: 30px;
+    
+  </style>
   </head>
   <body>
 
@@ -34,7 +47,7 @@
                   <a class="nav-link " aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'about' %}">About</a>
+                  <a class="nav-link active" href="{% url 'about' %}">About</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'contact' %}">Contact</a>
@@ -78,7 +91,7 @@
                     </div>
                   
                     <div class="form-container">
-                      <h2 class="text-center">Registration Form</h2>
+                      <h2 class="text-center registers">Registration Form</h2>
                       <form method="post" action="{% url 'register' %}">
                         {% csrf_token %}
                           <div class="mb-3">
