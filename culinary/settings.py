@@ -106,17 +106,37 @@ WSGI_APPLICATION = 'culinary.wsgi.application'
 
 # your_project/settings.py
 
-import pymysql
-pymysql.install_as_MySQLdb()  # Ensure pymysql is used as MySQLdb
+# import pymysql
+# pymysql.install_as_MySQLdb()  # Ensure pymysql is used as MySQLdb
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'wazobia_culinary',
+#         'USER': 'root',
+#         'PASSWORD': 'Official@lasop1',
+#         'HOST': '127.0.0.1',  # Example: '127.0.0.1' or 'your-remote-host'
+#         'PORT': 3306,       # Default MySQL port
+#         'OPTIONS': {
+#             'charset': 'utf8mb4',
+#         }
+#     }
+# }
+
+
+import os
+import pymysql
+pymysql.install_as_MySQLdb()
+
+# ✅ Use environment variables for security
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wazobia_culinary',
-        'USER': 'root',
-        'PASSWORD': 'Official@lasop1',
-        'HOST': '127.0.0.1',  # Example: '127.0.0.1' or 'your-remote-host'
-        'PORT': 3306,       # Default MySQL port
+        'NAME': os.getenv('DB_NAME', 'wazobia_culinary'),
+        'USER': os.getenv('DB_USER', 'root'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'Official@lasop1'),
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
+        'PORT': int(os.getenv('DB_PORT', 3306)),
         'OPTIONS': {
             'charset': 'utf8mb4',
         }
@@ -159,13 +179,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-MEDIA_URL=''
-STATIC_URL = 'static/'
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR, 'school/static')
-]
-STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT= BASE_DIR/''
+# MEDIA_URL=''
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS=[
+#     os.path.join(BASE_DIR, 'school/static')
+# ]
+# STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
+# MEDIA_ROOT= BASE_DIR/''
+
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
