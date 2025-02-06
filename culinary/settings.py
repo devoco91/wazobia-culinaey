@@ -225,13 +225,14 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Static Files
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'school/static')]  # Ensure 'school/static' exists
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Where static files will be collected
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # Optimize static files
+# ✅ Static Files
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "school/static")]  # Ensure 'school/static' exists
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Where static files will be collected
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# Media Files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Ensure 'media' directory exists
+# ✅ Media Files
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # Ensure 'media' directory exists
+
 
