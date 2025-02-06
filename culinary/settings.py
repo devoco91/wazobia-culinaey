@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 import pymysql
@@ -29,7 +34,15 @@ SECRET_KEY = 'django-insecure-on3uso5!_yug6toip)n4die+l69j^q+$jjgcbx3ziyfmv1tkm@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
+import os
+
+ALLOWED_HOSTS = [
+    os.getenv('VERCEL_URL', '127.0.0.1'),  # Vercel's default deployment URL
+    '.vercel.app',  # Allows any Vercel subdomain
+    'localhost',  # Allow local development
+]
+
 
 
 # Application definition
@@ -124,7 +137,15 @@ WSGI_APPLICATION = 'culinary.wsgi.application'
 # }
 
 
+# import os
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv()
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 import pymysql
 pymysql.install_as_MySQLdb()
 
@@ -132,16 +153,19 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'wazobia_culinary'),
+        'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'Official@lasop1'),
-        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
-        'PORT': int(os.getenv('DB_PORT', 3306)),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': int(os.getenv('DB_PORT')),
         'OPTIONS': {
             'charset': 'utf8mb4',
         }
     }
 }
+
+
+
 
 
 
@@ -179,19 +203,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-MEDIA_URL=''
-STATIC_URL = 'static/'
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR, 'school/static')
-]
-STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT= BASE_DIR/''
+# MEDIA_URL=''
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS=[
+#     os.path.join(BASE_DIR, 'school/static')
+# ]
+# STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
+# MEDIA_ROOT= BASE_DIR/''
 
-STATIC_URL = '/static/'
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Static Files
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'school/static')]  # Ensure 'school/static' exists
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Where static files will be collected
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"  # Optimize static files
+
+# Media Files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Ensure 'media' directory exists
+

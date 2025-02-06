@@ -71,7 +71,7 @@ def registerpage(request):
         # Save to database
         Registration.objects.create(
             name=name, email=email, address=address, phone=phone,
-            course=course, mode_of_study=mode_of_study,
+            course=course,level=level, mode_of_study=mode_of_study,
             gender=gender, shirt_size=shirt_size, agree=agree
         )
 
