@@ -1,14 +1,15 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "culinary/wsgi.py",
-      "use": "@vercel/python"
-    }
+      {
+          "src": "culinary/wsgi.py",
+          "use": "@vercel/python"
+      }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "/staticfiles/$1" },
-    { "src": "/media/(.*)", "dest": "/media/$1" },
-    { "src": "/(.*)", "dest": "culinary/wsgi.py" }
+      {
+          "src": "/(.*)",
+          "dest": "culinary/wsgi.py"
+      }
   ]
 }
