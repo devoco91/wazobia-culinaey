@@ -38,9 +38,9 @@ DEBUG = False
 import os
 
 ALLOWED_HOSTS = [
-    os.getenv('VERCEL_URL', '127.0.0.1'),  # Vercel's default deployment URL
-    '.vercel.app',  # Allows any Vercel subdomain
-    'localhost',  # Allow local development
+    os.getenv('VERCEL_URL', '127.0.0.1'),
+    '.vercel.app',  # Allow any Vercel subdomain
+    'localhost',
 ]
 
 
@@ -141,28 +141,25 @@ WSGI_APPLICATION = 'culinary.wsgi.application'
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env
 load_dotenv()
 
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
-import pymysql
-pymysql.install_as_MySQLdb()
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-# ✅ Use environment variables for security
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': int(os.getenv('DB_PORT')),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        }
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT", "3306"),
+        "OPTIONS": {
+            "charset": "utf8mb4",
+        },
     }
 }
+
 
 
 
