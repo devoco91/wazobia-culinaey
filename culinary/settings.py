@@ -48,6 +48,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',  # ✅ Correct Whitenoise setting
     'jazzmin',  #
     
@@ -56,7 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # 'django.contrib.staticfiles',
     'school'
 ]
 
@@ -237,5 +238,6 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # ✅ Media Files
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # Ensure 'media' directory exists
+
 
 
