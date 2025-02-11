@@ -1,16 +1,15 @@
 {
-    "builds": [
+  "version": 2,
+  "builds": [
       {
-        "src": "manage.py",
-        "use": "@vercel/python"
-      },
-      {
-        "src": "staticfiles/**",
-        "use": "@vercel/static"
+          "src": "culinary/wsgi.py",
+          "use": "@vercel/python"
       }
-    ],
-    "routes": [
-      { "src": "/static/(.*)", "dest": "/staticfiles/$1" }
-    ]
-  }
-  
+  ],
+  "routes": [
+      {
+          "src": "/(.*)",
+          "dest": "culinary/wsgi.py"
+      }
+  ]
+}
