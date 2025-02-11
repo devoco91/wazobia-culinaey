@@ -160,7 +160,7 @@ DATABASES = {
         'USER': os.getenv('DB_USER', 'pgsuknzx_mama'),  # ✅ Your MySQL username
         'PASSWORD': os.getenv('DB_PASSWORD', '@Mama051093'),  # ✅ Your MySQL password
         'HOST': '127.0.0.1',  # ✅ SSH tunnel (keep as 127.0.0.1)
-        'PORT': os.getenv('DB_PORT', '3307'),  # ✅ Use 3307 (or 3308 if changed)
+        'PORT': os.getenv('DB_PORT', '3306'),  # ✅ Use 3307 (or 3308 if changed)
     }
 }
 
