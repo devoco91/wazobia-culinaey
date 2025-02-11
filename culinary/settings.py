@@ -138,6 +138,8 @@ WSGI_APPLICATION = 'culinary.wsgi.application'
 
 
 # import os
+import pymysql
+pymysql.install_as_MySQLdb()
 import os
 from dotenv import load_dotenv
 
@@ -146,20 +148,21 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load .env file for local development
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT", "3306"),
-        "OPTIONS": {
-            "charset": "utf8mb4",
-        },
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME', 'pgsuknzx_culinary'),  # ✅ Your actual database name
+        'USER': os.getenv('DB_USER', 'pgsuknzx_mama'),  # ✅ Your MySQL username
+        'PASSWORD': os.getenv('DB_PASSWORD', '@Mama051093'),  # ✅ Your MySQL password
+        'HOST': '127.0.0.1',  # ✅ SSH tunnel (keep as 127.0.0.1)
+        'PORT': os.getenv('DB_PORT', '3307'),  # ✅ Use 3307 (or 3308 if changed)
     }
 }
-
 
 
 
