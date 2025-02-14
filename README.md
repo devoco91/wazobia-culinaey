@@ -1,0 +1,1 @@
+This is the official website for wazobia culinary school. It consist of a registration form, a contact form, a push notification and a payment gateway. it was developed using the python django framework
